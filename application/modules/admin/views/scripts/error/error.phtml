@@ -1,0 +1,18 @@
+
+  <h3>Error has happened. Inside this application. Sorry about that.</h3>
+<p><?=$this->message ?> (<?=$this->code ?>) </p>
+<?
+if( $this->env == 'admin' ) {
+ if ( isset($this->info ) ) { ?>
+<? if ( 404 == $this->code ) { ?>
+  <p><b>Reason:</b> <?= $this->info ?></p>
+<? } elseif (500 == $this->code) { ?>
+  <p>Bad server, naughty server!<br />No donut for you!</p>
+  <p><img src="<?=$this->baseUrl();?>/images/donut.jpg" /></p>
+  <h4>Exception information:</h4>
+ <p><b>Message:</b> <?= $this->info->getMessage() ?></p>
+ <h4>Stack trace:</h4>
+ <pre><?= $this->info->getTraceAsString() ?></pre>
+<? } ?>
+<? } ?>
+<? } ?>
